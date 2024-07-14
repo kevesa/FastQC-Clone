@@ -4,6 +4,10 @@ import random
 nucleotides = "GCAT"
 phred_quality = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
 
+#TODO: Add functionality that writes the generated FASTQ sequences into a file.
+#TODO: Create something that generates the random quality score pattern thats similar to these encountered in real-world sequences
+#TODO: Add clarifying comments about the code.
+
 def fastq_generator(amount: int, length: int):
     head =  0
     mid = length//3 
