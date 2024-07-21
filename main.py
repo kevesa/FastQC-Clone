@@ -3,11 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import utils
+import baseContent as bc
+import baseQuality as bq
+import seqQuality as sq
 
-def readFile(path: str) -> tuple[int, pd.DataFrame]:
+"""
+def read_file(path: str) -> tuple[int, pd.DataFrame]:
     sum_of_sequences = []
     amount_of_sequences = 0
-    with open("C:/Users/Vesa/Python Code/bio/testifastq.fastq") as handle:
+    with open("C:/Users/Vesa/Python Code/bio/lyhyt.fastq") as handle:
         for index, sequence in enumerate(SeqIO.parse(handle, "fastq")):
             quality_scores = sequence.letter_annotations["phred_quality"]
             sum_of_sequences.append(quality_scores)
@@ -18,7 +23,7 @@ def readFile(path: str) -> tuple[int, pd.DataFrame]:
     return(amount_of_sequences+1, pd.DataFrame(zip(*sum_of_sequences)).T)
 
 #TODO: This doesn't seem to be working quite right. Possibly issues with correct binning? For reference, look at Per sequence quality scores in FastQC.
-def doStatistics(data):
+def do_sequence_quality(data):
     total_bases = data.size
     bins = [32.5, 33.5, 34.5, 35.5]
     labels = ["33", "34", "35"]
@@ -38,10 +43,13 @@ def doStatistics(data):
     #print(category_counts)
 
     binned_means.plot(kind="line")#, order=["33", "34", "35"])
+    plt.suptitle("Per sequence quality score")
+    plt.xlabel("Mean sequence quality score")
+    plt.ylabel("Number of sequences")
     plt.show()
 
 
-def doSeaborn(data1):
+def do_base_quality(data1):
     positions = range(0, len(data1.columns), 10)
     labels = data1.columns[positions]
 
@@ -55,15 +63,36 @@ def doSeaborn(data1):
     plt.ylabel("Quality")
     plt.ylim(0, 40)
     plt.title("Quality Scores across base positions")
+    plt.suptitle("XxXxXxXxX")
     plt.show()
+"""
+def do_base_content(data):
+    counts = []
+    counts2 = pd.DataFrame()
+    possible_values = {"G":0, "C":0, "A":0, "T":0}
+    print("blöö", len(data))
+    for index in range(data.shape[1]):
+        counts.append(data[index].value_counts(normalize=False))
+    
+    for x in counts:
+        counts2 = pd.concat([counts2, x], axis=1)
+    counts2 = counts2.fillna(0)
+    print(counts2)
+    print("FRFRFRRFRRFRFRFRFR")
+    print(counts2.iloc[2])
+    #sns.lineplot(data=counts2.iloc[2])
+    #plt.show()
 
-#TODO: Implement a GUI.
+#TODO: Implement a CLI/GUI.
 def main():
     print("ABC")
-    print(readFile("path"))
-    index, data = readFile("path")
+    print(utils.read_file("path"))
+    index, data1, data2 = utils.read_file("path")
+    #print(data1)
+    print(data2)
     #doSeaborn(data)
-    doStatistics(data)
+    #sq.do_sequence_quality(data1)
+    do_base_content(data2)
 
 if __name__ == "__main__":
     main()
