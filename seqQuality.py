@@ -3,7 +3,9 @@ import seaborn as sns
 import pandas as pd
 
 #This file contains functions necessary for sequence quality analysis and sequence length distribution.
-def do_sequence_quality(data):
+
+#TODO: This doesn't seem to be working quite right. Possibly issues with correct binning? For reference, look at Per sequence quality scores in FastQC.
+def get_sequence_quality(data):
     total_bases = data.size
     bins = [32.5, 33.5, 34.5, 35.5]
     labels = ["33", "34", "35"]
@@ -28,5 +30,5 @@ def do_sequence_quality(data):
     plt.ylabel("Number of sequences")
     plt.show()
 
-def do_sequence_distribution(data):
+def get_sequence_distribution(data):
     print("")

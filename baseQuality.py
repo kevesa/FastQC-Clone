@@ -4,7 +4,7 @@ import pandas as pd
 
 #This file contains functions necessary for base quality analysis.
 
-def do_base_quality(data):
+def get_base_quality(data):
     positions = range(0, len(data.columns), 10)
     labels = data.columns[positions]
 
@@ -21,5 +21,5 @@ def do_base_quality(data):
     plt.suptitle("XxXxXxXxX")
     plt.show()
 
-def  do_length_distribution(data):
+def  get_length_distribution(data):
     print("")
