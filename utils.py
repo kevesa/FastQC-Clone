@@ -22,7 +22,7 @@ def read_file(path: str) -> tuple[int, pd.DataFrame, pd.DataFrame]:
             #print(type(quality_scores), quality_scores)
             #print(type(sequence.seq), sequence.seq)
     print("JOJOJJOJOJOJJOJOOOJJOJO")
-    get_gc_content(base_contents)
+    """get_gc_content(base_contents) #UNCOMMENT THIS"""
 
 
 
@@ -45,7 +45,7 @@ def get_gc_content(data):
     gc_content = pd.DataFrame(list(zip(gc_list)))
     #TODO: The current theoretical distribution curve is as of now complete garbage and should be ignored. 
     # Need to look more into how it should be implemented. Histogram for counts and GC content works as expected.
-    sns.histplot(data=gc_content)#, bw=0.1)
+    sns.histplot(data=gc_content, kde=True)#, bw=0.1)
     mu, sigma = norm.fit(gc_content)
     x_vals = np.linspace(min_gc, max_gc, 100)
     y_vals = norm.pdf(x_vals, mu, sigma)#*7000

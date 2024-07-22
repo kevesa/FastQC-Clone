@@ -13,7 +13,7 @@ from scipy.stats import norm
 #DONE: Per sequence quality scores
 #DONE: Per base sequence content
 #TODO: Per sequence GC content (HALF DONE)
-#TODO: Per base N content
+#DONE: Per base N content
 #TODO: Sequence length distribution
 #(TODO: Sequence duplication levels/Overrepresented sequences/Adapter content)
 #TODO: Implement a CLI/GUI.
@@ -31,13 +31,17 @@ def get_gc_content(data):
 
 def main():
     print("ABC")
-    utils.read_file("path")
-    #index, data1, data2 = utils.read_file("path")
+    #utils.read_file("path")
+    index, data1, data2 = utils.read_file("path")
     #print(data1)
     #print(data2)
     #doSeaborn(data)
     #sq.do_sequence_quality(data1)
     #bc.get_base_content(data2)
+    print(data2)
+    print("QIQIQIQIQIQIQIQIQIQIQIQIQIQI")
+    bc.get_na_content(data2)
+    #utils.get_gc_content(data2)
 
 if __name__ == "__main__":
     main()

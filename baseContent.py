@@ -43,3 +43,18 @@ def get_base_content(data):
     plt.xticks(np.arange(0, data.shape[1]+10, 10))
     plt.show()
 
+def get_na_content(data):
+    data = data.replace("N", pd.NA)
+    nan_counts = data.isna().sum()
+    percentages = (nan_counts / data.shape[0])*100
+    
+    #sns.histplot(data=nan_counts)
+    sns.barplot(x=percentages.index, y=percentages.values)
+    plt.xlabel("Sequence position")
+    plt.ylabel("N/A Count")
+    plt.ylim(0, 100)
+    plt.xticks(np.arange(0, data.shape[1], 10))
+
+    plt.show()
+    print("44444444DDDDDD4444444AAAAA4AA")
+    print(nan_counts.head(30))
