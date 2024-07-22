@@ -9,25 +9,16 @@ import baseQuality as bq
 import seqQuality as sq
 from scipy.stats import norm
 
-#DONE: Per base sequence quality
-#DONE: Per sequence quality scores
-#DONE: Per base sequence content
-#TODO: Per sequence GC content (HALF DONE)
-#DONE: Per base N content
-#TODO: Sequence length distribution
-#(TODO: Sequence duplication levels/Overrepresented sequences/Adapter content)
+#DONE: Per base sequence quality.
+#DONE: Per sequence quality scores.
+#DONE: Per base sequence content.
+#TODO: Per sequence GC content (HALF DONE, the implementation of theoretical distribution curve is non-essential and could be skipped altogether without remorse).
+#DONE: Per base N content.
+#TODO: Sequence length distribution (READ TODO at def get_sequence_distribution() in baseContent.py).
+#(TODO: Sequence duplication levels/Overrepresented sequences/Adapter content).
 #TODO: Implement a CLI/GUI.
-"""
-def get_gc_content(data):
-    gc_list = []
-    for sequence in data:
-        sequence_gc = (sequence.count("G") + sequence.count("C")) / len(sequence) * 100
-        gc_list.append(sequence_gc)
+#TODO: Clean up the unnecessary print statements and do some unit testing.
 
-    gc_content = pd.DataFrame(list(zip(gc_list)))
-
-    print(gc_content)
-"""
 
 def main():
     print("ABC")
@@ -40,7 +31,7 @@ def main():
     #bc.get_base_content(data2)
     print(data2)
     print("QIQIQIQIQIQIQIQIQIQIQIQIQIQI")
-    bc.get_na_content(data2)
+    get_sequence_distribution(data2)
     #utils.get_gc_content(data2)
 
 if __name__ == "__main__":

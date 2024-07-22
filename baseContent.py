@@ -58,3 +58,12 @@ def get_na_content(data):
     plt.show()
     print("44444444DDDDDD4444444AAAAA4AA")
     print(nan_counts.head(30))
+
+#TODO: The function below can't be finished until sequence padding is implemented in utils.py
+def get_sequence_distribution(data):
+    print(data)
+    print("aaaaa", type(data))
+    data = data.isna().sum()
+    #print(data)
+    #sns.lineplot(data)
+    #plt.show()

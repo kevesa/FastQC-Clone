@@ -7,13 +7,15 @@ from scipy.stats import norm
 
 #This file contains basic tools needed for handling user input data.
 
+
+#TODO: Added padding to ensure that sequences are of uniform length
 def read_file(path: str) -> tuple[int, pd.DataFrame, pd.DataFrame]:
     sequence_qualities = []
     base_contents = []
     amount_of_sequences = 0
-    with open("C:/Users/Vesa/Python Code/bio/testifastq.fastq") as handle:
+    with open("C:/Users/Vesa/Python Code/bio/lyhyt.fastq") as handle:
         for index, sequence in enumerate(SeqIO.parse(handle, "fastq")):
-            #print(sequence.seq)
+            print(type(sequence.seq))
             quality_scores = sequence.letter_annotations["phred_quality"]
             sequence_qualities.append(quality_scores)
             amount_of_sequences = index

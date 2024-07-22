@@ -31,4 +31,8 @@ def get_sequence_quality(data):
     plt.show()
 
 def get_sequence_distribution(data):
-    print("")
+    data = data.notna().sum(axis=1)
+    data = data.value_counts()
+    print(data)
+    sns.barplot(x=data.index, y=data.values)
+    plt.show()
